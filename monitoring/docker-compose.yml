@@ -1,5 +1,13 @@
 version: "3"
 services:
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    volumes:
+      - "grafana_data:/var/lib/grafana"
+
   prometheus:
     image: prom/prometheus:latest
     container_name: prometheus
@@ -38,4 +46,6 @@ services:
 
 volumes:
   prometheus_data:
+    driver: local
+  grafana_data:
     driver: local
